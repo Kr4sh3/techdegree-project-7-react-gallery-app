@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 import Photo from './Photo';
 import { useParams } from 'react-router-dom';
 import NotFound from './NotFound';
@@ -18,8 +18,8 @@ const getFlickrImageURL = (photo, size) => {
 function PhotoList({ data, changeQuery, loading }) {
     //Whenever this component is loaded, update our query state if there is a query in the url
     let { query } = useParams();
-    if (query)
-        changeQuery(query);
+    useEffect(() => { if (query) changeQuery(query); });
+
 
     //Set content to loading if still retrieving request, NotFound component if we didnt recieve any data, or list images if we do have data
     let content;
@@ -30,7 +30,7 @@ function PhotoList({ data, changeQuery, loading }) {
             content = (< NotFound />);
         } else {
             content = (
-                <div class="photo-container">
+                <div className="photo-container">
                     <h2>Results</h2>
                     <ul>
                         {data.map((photo) => { return <Photo url={getFlickrImageURL(photo, 'c')} alt={photo.title} key={photo.id} />; })}

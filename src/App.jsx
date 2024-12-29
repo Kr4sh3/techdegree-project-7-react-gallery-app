@@ -31,7 +31,7 @@ function App() {
         if (activeFetch) {
           //Setting the value of images to undefined if there are no images so we can tell if the results were empty in PhotoList
           //Checking the length of data in photolist would sometimes result in not found being displayed before displaying images
-          if (response.data.photos.photo.length === 0)
+          if (!response.data.photos || response.data.photos.photo.length === 0)
             setFunction(undefined)
           else
             setFunction(response.data.photos.photo);
@@ -74,10 +74,10 @@ function App() {
         <Nav />
         <Routes>
           <Route path="/" element={<PhotoList data={homeImages} loading={loading} />} />
-          <Route path="cats" element={<PhotoList data={catImages} loading={loading} />} />
-          <Route path="dogs" element={<PhotoList data={dogImages} loading={loading} />} />
-          <Route path="computers" element={<PhotoList data={computerImages} loading={loading} />} />
-          <Route path="search/:query" element={<PhotoList data={searchImages} changeQuery={handleQueryChange} loading={loading} />} />
+          <Route path="/cats" element={<PhotoList data={catImages} loading={loading} />} />
+          <Route path="/dogs" element={<PhotoList data={dogImages} loading={loading} />} />
+          <Route path="/computers" element={<PhotoList data={computerImages} loading={loading} />} />
+          <Route path="/search/:query" element={<PhotoList data={searchImages} changeQuery={handleQueryChange} loading={loading} />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>

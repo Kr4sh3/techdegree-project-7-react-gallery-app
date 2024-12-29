@@ -1,8 +1,7 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 function Nav() {
-    return (<nav class="main-nav">
+    return (<nav className="main-nav">
         <ul>
             <li>
                 <NavLink to='/cats'>Cats</NavLink>
