@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-const apiKey = process.env.REACT_APP_API_KEY;
+import apiKey from './config';
 import axios from 'axios';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
