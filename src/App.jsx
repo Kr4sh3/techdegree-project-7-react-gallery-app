@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import apiKey from './config';
+const apiKey = import.meta.env.VITE_APP_API_KEY;
 import axios from 'axios';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
